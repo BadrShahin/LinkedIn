@@ -1,0 +1,85 @@
+﻿@model LinkedIn.Models.Education
+
+@{
+    ViewBag.Title = "EditEducation";
+}
+
+@*<h2>EditEducation</h2>*@
+
+@using (Ajax.BeginForm("EditEducation", "Profile", new AjaxOptions { HttpMethod = "Post", OnSuccess = "toggleEditEducation()" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.member_id, "member_id", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("member_id", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.member_id, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.cv_section_id, "cv_section_id", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("cv_section_id", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cv_section_id, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            @Html.Label("School Name", htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.school_name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.school_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("School Location", htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.school_location, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.school_location, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Start Date", htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.start_date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.start_date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("End Date", htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.end_date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.end_date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Other Details", htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.other_details, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.other_details, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <hr style="margin: 0 -17px 1rem -17px" />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-12">
+                <input type="submit" value="Save" class="btn btn-primary pull-right" />
+            </div>
+        </div>
+    </div>
+}
+
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@

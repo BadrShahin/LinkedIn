@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Comment>
+
+
+@{
+    Member member = Session["user"] as Member;
+    LinkedInDBContext linkedInDB = new LinkedInDBContext();
+}
+
+
+
+@foreach (var item in Model)
+{
+    Member user = linkedInDB.Members.FirstOrDefault(x=>x.member_id == item.member_id);
+    
+
+
+    <div class="comentContainer" style="border: 1px solid #ced4da; border-radius: 3px; margin-bottom: 5px">
+        <div class="col-md-12" style="padding: 0">
+            <div class="" style="display: flex;">
+                <div class="col-md-2" style="height: fit-content; padding: 0; width: 60px !important; flex-basis: 5%">
+                    <img src="@user.profile_image" style="border-radius: 50%; padding:5px" width="40px" height="40px">
+                </div>
+                <div class="col-md-10" style="padding: 0">
+                    <div class="row" style="margin-left: 0">
+                        <div class="col-md-9" style="top: 5px">
+                            <h5 style="margin: 0">
+                                @user.first_name @user.last_name
+                            </h5>
+                        </div>
+                        <div class="col-md-3" style="padding-right: 0">
+                            @{
+                                if (member.member_id == user.member_id)
+                                {
+                                    @Ajax.ActionLink(" ", "DeleteComment", new { id = item.comment_id },new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace,
+                                   UpdateTargetId = "EditCommentId"}, htmlAttributes: new { @class = "fa fa-trash text-danger",Style = "font-size:20px; float: right; padding: 0; text-decoration: none", onclick = "return confirm('Are you sure to delete ?')" })
+
+                                    @Ajax.ActionLink(" ","EditComment",new {id=item.comment_id},
+                                        new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "EditCommentId",
+                                            InsertionMode = InsertionMode.Replace, OnSuccess = "toggleEditComment()"},
+                                        htmlAttributes:new {@class="fa fa-pencil text-primary" ,Style= "font-size:20px; float: right; padding: 0; margin-right: 10px; text-decoration: none"
+                                        })
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<hr style="margin: 0 0 5px 0" />*@
+        <label class="col-md-12 text-muted" style="margin: 0 auto; padding-left: 55px; padding-bottom: 10px">
+            @Html.DisplayFor(Model => item.comment_content)
+        </label>
+    </div>
+
+}
+<br />
+
+
+
+

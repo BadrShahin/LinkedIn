@@ -17,6 +17,9 @@ namespace LinkedIn.Models
 
         [Column(TypeName = "date")]
         public DateTime? date_connection_made { get; set; }
+        
+        //-1 no , 0 default , 1 accept
+        public int accept { get; set; } = 0;
 
         public virtual Member Member { get; set; }
 

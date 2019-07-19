@@ -1,0 +1,51 @@
+﻿@model LinkedIn.Models.Member
+
+@{
+                /**/
+
+                ViewBag.Title = "Details";
+                Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<hr />
+<div>
+    <div class="card" style="width: 50%; margin: 0 auto">
+        <img class="" width="160" height="160" src="@Html.DisplayFor(model => model.profile_image)" alt="Card image cap" style="border: 1px solid gray; border-radius: 50%; margin: 10px auto">
+        <div class="card-body">
+            <h5 class="card-title">Name: @Html.DisplayFor(model => model.first_name) @Html.DisplayFor(model => model.middle_name) @Html.DisplayFor(model => model.last_name)</h5>
+            <label>Email: @Html.DisplayFor(model => model.email_address)</label><br />
+            @{
+                if (@Html.DisplayFor(model => model.gender) != null)
+                {
+                    <label>Gender: @Html.DisplayFor(model => model.gender)</label><br />
+                }
+                if (@Html.DisplayFor(model => model.marital_status_description) != null)
+                {
+                    <label>Status: @Html.DisplayFor(model => model.marital_status_description)</label><br />
+                }
+                if (@Html.DisplayFor(model => model.date_of_birth) != null)
+                {
+                    <label>Date of Birth: @Html.DisplayFor(model => model.date_of_birth)</label><br />
+                }
+                if (@Html.DisplayFor(model => model.date_joined) != null)
+                {
+                    <label>Joined On: @Html.DisplayFor(model => model.date_joined)</label><br />
+                }
+                if (@Html.DisplayFor(model => model.Organization.organization_name) != null)
+                {
+                    <label>Work for: @Html.DisplayFor(model => model.Organization.organization_name)</label><br />
+                }
+                if (@Html.DisplayFor(model => model.other_details) != null)
+                {
+                    <label class="card-text">Other Details:  @Html.DisplayFor(model => model.other_details)</label><br />
+                }
+            }
+        </div>
+    </div>
+
+
+    <p style="Width: 50%;margin: 10px auto">
+        <i class="fa fa-arrow-circle-o-left"></i> @Html.ActionLink("Back to List", "Index")
+    </p>
+
+</div>

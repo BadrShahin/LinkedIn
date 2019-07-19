@@ -1,0 +1,367 @@
+﻿@model Member
+@{
+    Member currentMember = Session["user"] as Member;
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Address address = Session["Address"] as Address;
+    List<Experience> experience = TempData["Experience"] as List<Experience>;
+    List<Education> education = TempData["Education"] as List<Education>;
+    if (Model != null)
+    {
+        Session["user_profile_image"] = Model.profile_image;
+    }
+    //List<Experience> experiences = TempData["ExperienceList"] as List<Experience>;
+}
+
+@*@{
+    var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"].ToString();
+    if (controller == "Home")
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_UserLayout.cshtml";
+    }*@
+
+@*profile*@
+
+<div class="row card">
+    <div class="profile-background-image">
+        @*<img src="https://static.licdn.com/sc/h/3chad3rzxalsf65nuo7hxciac" alt="cover" />*@
+    </div>
+    <div>
+        <section class="profile-section" id="profile-section">
+            <div class="profile-edit-info d-flex">
+                @*<a data-control-name="edit_top_card" href="Edit/@Model.member_id">
+            <li-icon type="pencil-icon" role="img" aria-label="Edit Profile">
+                <svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet"
+                     class="artdeco-icon" focusable="false">
+                    <path d="M21.71,5L19,2.29a1,1,0,0,0-1.41,0L4,15.85,2,22l6.15-2L21.71,6.45A1,1,0,0,0,22,5.71,1,1,0,0,0,21.71,5ZM6.87,18.64l-1.5-1.5L15.92,6.57l1.5,1.5ZM18.09,7.41l-1.5-1.5,1.67-1.67,1.5,1.5Z"
+                          class="large-icon" style="fill: currentColor">
+                    </path>
+                </svg>
+            </li-icon>
+
+        </a>*@
+                @{
+                    if (currentMember.member_id == Model.member_id)
+                    {
+                        @Ajax.ActionLink(" ", "Edit", new { id = Model.member_id }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "editprofileinfomodalbody", InsertionMode = InsertionMode.Replace, OnSuccess = "toggleEditModal()" }, htmlAttributes: new { @class = "fa fa-pencil" })
+                    }
+                }
+            </div>
+
+            <div class="profile-image-container">
+                <div class="profile-image-wrapper">
+                    <button class="profile-image-wrapper-button">
+                        <img class="profile-image-wrapper-button-image" src="@Model.profile_image" width="128"
+                             height="128" alt="profile" srcset="">
+                    </button>
+                </div>
+            </div>
+            <div class="info-container d-flex" id="info-container">
+                <div class="personal-info-container col-md-8">
+                    <div class="name-container t-18">
+                        <h2>@Model.first_name @Model.middle_name @Model.last_name</h2>
+                    </div>
+                    <div class="address-container t-14">
+                        <h4>
+                            @if (address != null)
+                            {
+                                if (address.line_1 != null)
+                                {
+                                    <i>@address.line_1 /</i>
+                                }
+                                <i>@address.city /</i> <i>@address.state_country_province /</i> <i>@address.country</i>;
+                            }
+                        </h4>
+                    </div>
+                    <div class="country-container t-10">
+                        <h4>
+                            @if (address != null)
+                            {
+                                <i>@address.country</i>
+                            }
+                        </h4>
+                    </div>
+                </div>
+                <div class="work-short-info-container col-md-4">
+                    <ul>
+                        @{
+                            if (experience != null)
+                            {
+                                foreach (var item in experience.ToList())
+                                {
+                                    <a href="#"><li>@item.title</li></a>
+                                }
+                            }
+
+                        }
+
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="bio-container">
+                <p>@Model.other_details</p>
+            </div>
+        </section>
+    </div>
+</div>
+
+<div class="row">
+    <div class="experience card">
+        @*<i class="fas fa-plus text-primary" onclick="toggleAddExperience()" alt="add"></i>*@
+
+        @{
+            if (currentMember.member_id == Model.member_id)
+            {
+                @Ajax.ActionLink(" ", "AddExperience", new { id = Model.member_id }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "AddExperiencemodalbody", InsertionMode = InsertionMode.Replace, OnSuccess = "toggleAddExperience()" }, htmlAttributes: new { @class = "fa fa-plus text-primary" })
+            }
+        }
+        <h5 class="title">Experience</h5>
+        @{
+            if (experience != null)
+            {
+                foreach (var item in experience.ToList())
+                {
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="~/layoutresources/images/2.png" alt="iqon" height="55" width="55" />
+                        </div>
+                        <div class="col-md-10">
+                            @{
+                                if (currentMember.member_id == Model.member_id)
+                                {
+                                    @Ajax.ActionLink(" ", "EditExperience", new { id = item.experience_id }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "EditExperiencemodalbody", InsertionMode = InsertionMode.Replace, OnSuccess = "toggleEditExperience()" }, htmlAttributes: new { @class = "fa fa-pencil", style = "float: right;" })
+                                }
+                            }
+
+                            @*<i class="fas fa-pen text-primary" onclick="toggleeditexperience()" alt="edit"></i>*@
+                            <h5 class="experience-title">@item.title</h5>
+                            <span class="experience-company">@item.company_name</span>
+                            <span class="experience-location">@item.company_location</span>
+                            <span class="experience-date">@item.start_date - @item.end_date</span>
+                            <p class="experience-description">
+                                @item.description
+                            </p>
+                            <p class="experience-media">@item.other_details</p>
+                        </div>
+                    </div>
+                    <hr style="margin: 0 -17px 1rem -17px" />
+                }
+            }
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="education card">
+        @*<i class="fas fa-plus text-primary" onclick="toggleAddExperience()" alt="add"></i>*@
+
+        @{
+            if (currentMember.member_id == Model.member_id)
+            {
+                @Ajax.ActionLink(" ", "AddEducation", new { id = Model.member_id }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "AddEducationmodalbody", InsertionMode = InsertionMode.Replace, OnSuccess = "toggleAddEducation()" }, htmlAttributes: new { @class = "fa fa-plus text-primary" })
+            }
+        }
+        <h5 class="title">Education</h5>
+        @{
+            if (education != null)
+            {
+                foreach (var item in education.ToList())
+                {
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="~/layoutresources/images/2.png" alt="iqon" height="55" width="55" />
+                        </div>
+                        <div class="col-md-10">
+                            @{
+                                if (currentMember.member_id == Model.member_id)
+                                {
+                                    @Ajax.ActionLink(" ", "EditEducation", new { id = item.id }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "EditEducationmodalbody", InsertionMode = InsertionMode.Replace, OnSuccess = "toggleEditEducation()" }, htmlAttributes: new { @class = "fa fa-pencil", style = "float: right;" })
+                                }
+                            }
+                            <h5 class="education-name">@item.school_name</h5>
+                            <span class="education-location">@item.school_location</span>
+                            <span class="education-date">@item.start_date - @item.end_date</span>
+                            <p class="education-media">@item.other_details</p>
+                        </div>
+                    </div>
+                    <hr style="margin: 0 -17px 1rem -17px" />
+                }
+            }
+        }
+    </div>
+</div>
+<br />
+
+
+<!-- Modal -->
+<div id="AddExperience" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="color: #777; font-size:20px;">Add Experience</h4>
+                <button type="button" class="close" data-dismiss="modal" onclick="toggleAddExperience()">&times;</button>
+            </div>
+            <div class="modal-body" id="AddExperiencemodalbody">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--modal toggle close for Add-->
+<div id="CloseAddExperience" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to discard changes to this?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Discard</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">No Thanks</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- edit experience-->
+<!-- Modal edit -->
+<div id="EditExperience" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" onclick="toggleEditExperience()">&times;</button>
+                <h4 class="modal-title">Edit Experience</h4>
+            </div>
+            <div class="modal-body" id="EditExperiencemodalbody">
+
+            </div>
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>*@
+        </div>
+
+    </div>
+</div>
+
+<!--modal toggle close for edit-->
+<div id="CloseEditExperience" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to discard changes to this?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Discard</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">No Thanks</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!--Edit profile Modal -->
+<div id="editprofileinfomodal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content" style="min-width: 700px; margin-left: -80px">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h5 class="modal-title">Edit Profile</h5>
+            </div>
+            <div class="modal-body" id="editprofileinfomodalbody">
+            </div>
+
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>*@
+        </div>
+
+    </div>
+</div>
+
+<!-- Add Experience Modal -->
+<div id="AddEducation" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="color: #777; font-size:20px;">Add Education</h4>
+                <button type="button" class="close" data-dismiss="modal" onclick="toggleAddEducation()">&times;</button>
+            </div>
+            <div class="modal-body" id="AddEducationmodalbody">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Experience Modal -->
+<div id="EditEducation" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="color: #777; font-size:20px;">Edit Education</h4>
+                <button type="button" class="close" data-dismiss="modal" onclick="toggleEditEducation()">&times;</button>
+            </div>
+            <div class="modal-body" id="EditEducationmodalbody">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleAddExperience() {
+        $("#AddExperience").modal("toggle");
+
+    }
+    function toggleEditExperience() {
+        $("#EditExperience").modal("toggle");
+
+    }
+
+    function toggleCloseEditExperience() {
+        $("#CloseEditExperience").modal("toggle");
+
+    }
+
+    function toggleCloseAddExperience() {
+        $("#CloseAddExperience").modal("toggle");
+
+    }
+
+    function toggleEditModal() {
+        $("#editprofileinfomodal").modal("toggle");
+    }
+
+    function toggleAddEducation() {
+        $("#AddEducation").modal("toggle");
+    }
+    function toggleEditEducation() {
+        $("#EditEducation").modal("toggle");
+    }
+
+
+</script>

@@ -1,0 +1,16 @@
+﻿
+
+@model Comment
+
+@{
+    Member member = Session["user"] as Member;
+}
+
+
+<form action="/Default/index" method="post">
+    <input type="hidden" name="postId" value="@Model.post_id" />
+    <input type="hidden" name="CommenterId" value="@member.member_id" />
+    <input type="text" class="form-control" placeholder="Add comment ..." name="commentContent" />
+    <input type="submit" value="Add" class="btn-primary" />
+</form>
+

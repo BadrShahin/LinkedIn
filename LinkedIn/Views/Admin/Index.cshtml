@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Member>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-striped table-hover table-sm">
+    <thead>
+        <tr class="text-center">
+            <th>#</th>
+            <th>@Html.Label("First Name") </th>
+            <th>@Html.Label("Middel Name") </th>
+            <th>@Html.Label("Last Name") </th>
+            <th>@Html.Label("Email") </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var item in Model)
+            {
+                <tr class="text-center">
+                    <td>@Html.DisplayFor(model => item.member_id)</td>
+                    <td>@Html.DisplayFor(model => item.first_name)</td>
+                    <td>@Html.DisplayFor(model => item.middle_name)</td>
+                    <td>@Html.DisplayFor(model => item.last_name)</td>
+                    <td>@Html.DisplayFor(model => item.email_address)</td>
+                    <td style="float: right">
+                        @*@Ajax.ActionLink(" ", "EditExperience", new { id = item.experience_id }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "EditExperiencemodalbody", InsertionMode = InsertionMode.Replace, OnSuccess = "toggleEditExperience()" }, htmlAttributes: new { @class = "fa fa-pencil", style = "float: right;" })*@
+
+                        @*@Ajax.ActionLink(" ", "Edit", new { id = item.member_id }, new AjaxOptions { @*HttpMethod = "Get", UpdateTargetId = "EditExperiencemodalbody", InsertionMode = InsertionMode.Replace, OnSuccess = "toggleEditExperience()" }, htmlAttributes: new { @class = "btn btn-primary fa fa-pencil"})*@
+                        @Ajax.ActionLink(" ", "Details", new { id = item.member_id }, new AjaxOptions { @*HttpMethod = "Get", UpdateTargetId = "EditExperiencemodalbody", InsertionMode = InsertionMode.Replace, OnSuccess = "toggleEditExperience()"*@ }, htmlAttributes: new { @class = "btn btn-success fa fa-info"})
+                        @Ajax.ActionLink(" ", "Delete", new { id = item.member_id }, new AjaxOptions { @*HttpMethod = "Get", UpdateTargetId = "EditExperiencemodalbody", InsertionMode = InsertionMode.Replace, OnSuccess = "toggleEditExperience()"*@ }, htmlAttributes: new { @class = "btn btn-danger fa fa-trash", onclick = "return confirm('Are you sure to delete ?')" })
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Member>
+@{
+    ViewBag.Title = "Request";
+}
+
+@{
+    ViewBag.Title = "Index";
+    var User = Session["user"] as Member;
+}
+<div class="card text-center text-muted">
+    <h2>Requests</h2>
+</div>
+<table>
+
+    <tr style="display: flex">
+        @foreach (var item in Model)
+        {
+            <td>
+                <div class="card" style="width: 200px; margin: 10px;">
+                    <img class="" src="@item.profile_image" width="160" height="160" style="margin: 0 auto; padding: 10px 0 ;border-radius: 50%" alt="Profile Pics">
+                    <hr />
+                    <div class="card-body">
+                        <h5 class="card-title">@item.first_name @item.last_name</h5>
+                        @Html.ActionLink("Accept", "accept", "connection", htmlAttributes: new { @class = "btn btn-success" }, routeValues: new { currentid = User.member_id, senderid = item.member_id })
+                        @Html.ActionLink("Remove", "remove", "connection", htmlAttributes: new { @class = "btn btn-danger" }, routeValues: new { currentid = User.member_id, senderid = item.member_id })
+                    </div>
+                </div>
+            </td>
+        }
+
+    </tr>
+</table>

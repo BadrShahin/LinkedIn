@@ -1,0 +1,15 @@
+﻿@model IEnumerable<LinkedIn.Models.Member>
+
+<ul class="list-group">
+    @{
+        Member currentMember = Session["user"] as Member;
+        foreach (var item in Model)
+        {
+            <li class="list-group-item" style="margin-bottom: 3px; padding-top: 5px; padding-bottom: 5px">
+                <img src="@item.profile_image" style="border-radius: 50%; padding:5px;" width="40px" height="40px">
+                @Html.ActionLink(item.first_name + " " + item.last_name, "GetProfile", "Profile", routeValues: new { id = item.member_id }, htmlAttributes: new { style = "text-decoration: none" })
+                @*@Html.ActionLink(" ", "remove", "default", htmlAttributes: new { @class = "fa fa-trash text-danger pull-right", style = "padding: 10px 0;" }, routeValues: new { currentid = currentMember.member_id, senderid = item.member_id })*@
+            </li>
+        }
+    }
+</ul>

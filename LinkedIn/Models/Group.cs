@@ -36,6 +36,8 @@ namespace LinkedIn.Models
 
         public string other_details { get; set; }
 
+        public int? Member_member_id { get; set; }
+
         public virtual Member Member { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

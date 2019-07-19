@@ -149,6 +149,51 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
+    <Content Include="LayoutResources\css\profile.css" />
+    <Content Include="LayoutResources\css\style.css" />
+    <Content Include="LayoutResources\css\style.min.css" />
+    <Content Include="LayoutResources\images\1.jpg" />
+    <Content Include="LayoutResources\images\2.png" />
+    <Content Include="LayoutResources\images\li_evergreen_jobs_ad_300x250_v1.jpg" />
+    <Content Include="LayoutResources\images\logo.png" />
+    <Content Include="LayoutResources\images\logo_1.png" />
+    <Content Include="LayoutResources\images\microsoft1.png" />
+    <Content Include="LayoutResources\images\user.png" />
+    <Content Include="LayoutResources\index.html" />
+    <Content Include="LayoutResources\jquery-emoji-picker-master\.gitignore" />
+    <Content Include="LayoutResources\jquery-emoji-picker-master\css\jquery.emojipicker.a.css" />
+    <Content Include="LayoutResources\jquery-emoji-picker-master\css\jquery.emojipicker.css" />
+    <Content Include="LayoutResources\jquery-emoji-picker-master\css\jquery.emojipicker.g.css" />
+    <Content Include="LayoutResources\jquery-emoji-picker-master\css\jquery.emojipicker.tw.css" />
+    <Content Include="LayoutResources\jquery-emoji-picker-master\demo.html" />
+    <Content Include="LayoutResources\jquery-emoji-picker-master\Gruntfile.js" />
+    <Content Include="LayoutResources\jquery-emoji-picker-master\js\jquery.emojipicker.js" />
+    <Content Include="LayoutResources\jquery-emoji-picker-master\js\jquery.emojis.js" />
+    <Content Include="LayoutResources\js\main.js" />
+    <Content Include="LayoutResources\profile.html" />
+    <Content Include="LayoutResource\.gitignore" />
+    <Content Include="LayoutResource\css\scrolling-nav.css" />
+    <Content Include="LayoutResource\gulpfile.js" />
+    <Content Include="LayoutResource\images\In-2CRev-28px-R.png" />
+    <Content Include="LayoutResource\index.html" />
+    <Content Include="LayoutResource\js\scrolling-nav.js" />
+    <Content Include="LayoutResource\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="LayoutResource\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="LayoutResource\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="LayoutResource\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="LayoutResource\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="LayoutResource\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="LayoutResource\vendor\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="LayoutResource\vendor\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="LayoutResource\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="LayoutResource\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="LayoutResource\vendor\jquery-easing\jquery.easing.compatibility.js" />
+    <Content Include="LayoutResource\vendor\jquery-easing\jquery.easing.js" />
+    <Content Include="LayoutResource\vendor\jquery-easing\jquery.easing.min.js" />
+    <Content Include="LayoutResource\vendor\jquery\jquery.js" />
+    <Content Include="LayoutResource\vendor\jquery\jquery.min.js" />
+    <Content Include="LayoutResource\vendor\jquery\jquery.slim.js" />
+    <Content Include="LayoutResource\vendor\jquery\jquery.slim.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -176,6 +221,23 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="LayoutResources\images\linkedIn_PNG24.webp" />
+    <Content Include="LayoutResource\.travis.yml" />
+    <Content Include="LayoutResource\LICENSE" />
+    <Content Include="LayoutResource\package-lock.json" />
+    <Content Include="LayoutResource\package.json" />
+    <Content Include="LayoutResource\README.md" />
+    <Content Include="LayoutResource\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="LayoutResource\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="LayoutResource\vendor\bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="LayoutResource\vendor\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="LayoutResource\vendor\bootstrap\js\bootstrap.js.map" />
+    <Content Include="LayoutResource\vendor\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="LayoutResource\vendor\jquery\jquery.min.map" />
+    <Content Include="LayoutResource\vendor\jquery\jquery.slim.min.map" />
+    <Content Include="LayoutResources\jquery-emoji-picker-master\bower.json" />
+    <Content Include="LayoutResources\jquery-emoji-picker-master\package.json" />
+    <Content Include="LayoutResources\jquery-emoji-picker-master\README.md" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -211,25 +273,44 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ConnectionController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904031906002_Createdb.cs" />
+    <Compile Include="Migrations\201904031906002_Createdb.Designer.cs">
+      <DependentUpon>201904031906002_Createdb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904042024090_addConnectionAcceptColumn.cs" />
+    <Compile Include="Migrations\201904042024090_addConnectionAcceptColumn.Designer.cs">
+      <DependentUpon>201904042024090_addConnectionAcceptColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904051658111_addPostImageColumn.cs" />
+    <Compile Include="Migrations\201904051658111_addPostImageColumn.Designer.cs">
+      <DependentUpon>201904051658111_addPostImageColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
-    <Compile Include="Models\comment.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Connection.cs" />
     <Compile Include="Models\CV.cs" />
     <Compile Include="Models\CV_Sections.cs" />
+    <Compile Include="Models\Education.cs" />
+    <Compile Include="Models\Experience.cs" />
     <Compile Include="Models\Group.cs" />
-    <Compile Include="Models\LinkedInContext.cs" />
+    <Compile Include="Models\LinkedInDBContext.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Members_Groups.cs" />
-    <Compile Include="Models\message.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\People_Being_Followed.cs" />
-    <Compile Include="Models\post.cs" />
+    <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Recommendation.cs" />
     <Compile Include="Models\Ref_CV_Sections.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -237,6 +318,35 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\_Viewstart.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Profile\Edit.cshtml" />
+    <Content Include="Views\Profile\AddExperience.cshtml" />
+    <Content Include="Views\Shared\_loginLayout.cshtml" />
+    <Content Include="Views\Default\Address.cshtml" />
+    <Content Include="Views\Default\personalInfo.cshtml" />
+    <Content Include="Views\Default\welcome.cshtml" />
+    <Content Include="Views\Profile\EditExperience.cshtml" />
+    <Content Include="Views\Profile\AddEducation.cshtml" />
+    <Content Include="Views\Profile\EditEducation.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Connection\Index.cshtml" />
+    <Content Include="Views\Connection\request.cshtml" />
+    <Content Include="Views\Post\Index.cshtml" />
+    <Content Include="Views\Post\GetAll.cshtml" />
+    <Content Include="Views\Post\CreatePost.cshtml" />
+    <Content Include="Views\Post\GetAllComments.cshtml" />
+    <Content Include="Views\Post\EditPost.cshtml" />
+    <Content Include="Views\Post\AddComment.cshtml" />
+    <Content Include="Views\Post\EditComment.cshtml" />
+    <Content Include="Views\Profile\GetProfile.cshtml" />
+    <Content Include="Views\Default\Friends.cshtml" />
+    <Content Include="Views\Default\Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -246,13 +356,24 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
+    <Folder Include="LayoutResources\images\posts\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201904031906002_Createdb.resx">
+      <DependentUpon>201904031906002_Createdb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904042024090_addConnectionAcceptColumn.resx">
+      <DependentUpon>201904042024090_addConnectionAcceptColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904051658111_addPostImageColumn.resx">
+      <DependentUpon>201904051658111_addPostImageColumn.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*home page*@
+
+<div class="row">
+    <aside class="col-md-4">
+        <div class="row">
+            <div class="col-md-12" style="margin: 0">
+                @Html.Action("Friends")
+            </div>
+        </div>
+    </aside>
+    @Html.Action("Index", "Post")
+</div>
+

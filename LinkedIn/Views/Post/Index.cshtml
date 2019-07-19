@@ -1,0 +1,181 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<div class="add-post-card col-md-8">
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex" style="width: 100%">
+
+                <!-- Button trigger modal -->
+                <button style="flex-grow: 7" class="share-box__open share-box__trigger p4 hoverable-link-text t-16 t-black--light t-bold"
+                        data-control-name="share.sharebox_focus" data-ember-action=""
+                        data-ember-action-44="44" data-toggle="modal" @*data-target="#exampleModalCenter"*@ onclick="toggleAddPost()">
+                    <li-icon aria-hidden="true" type="compose-icon" class="mr2" size="medium">
+                        <svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0"
+                             preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false">
+                            <path d="M17,13.75l2-2V20a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V6A1,1,0,0,1,4,5h8.25l-2,2H5V19H17V13.75Zm5-8a1,1,0,0,1-.29.74L13.15,15,7,17l2-6.15,8.55-8.55a1,1,0,0,1,1.41,0L21.71,5A1,1,0,0,1,22,5.71ZM17.93,7.58l-1.5-1.5-6.06,6.06,1.5,1.5Zm1.84-1.84-1.5-1.5L17.09,5.41l1.5,1.5Z"
+                                  class="large-icon" style="fill: currentColor"></path>
+                        </svg>
+                    </li-icon>
+                    Start a post
+                </button>
+                <div style="flex-grow: 1; padding: 10px 10px 10px 25px;" class="share-box__open share-box__trigger p4 hoverable-link-text t-16 t-black--light t-bold">
+                    <label for="ember45-upload-IMAGE" class="share-media-button__label mvA
+                                            share-media-button__label--square">
+
+                        <li-icon aria-hidden="true" type="camera-icon" size="large">
+                            <svg viewBox="0 0 24 24"
+                                 width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet"
+                                 class="artdeco-icon" focusable="false">
+                                <path d="M21,6H18L16.5,3h-9L6,6H3A1,1,0,0,0,2,7V19a1,1,0,0,0,1,1H21a1,1,0,0,0,1-1V7A1,1,0,0,0,21,6ZM7.36,8l1.5-3h6.28l1.5,3H20v2H16.58a5,5,0,0,0-9.16,0H4V8H7.36Zm7.76,4A3.13,3.13,0,1,1,12,8.88,3.13,3.13,0,0,1,15.13,12ZM4,18V11H7.1a5,5,0,1,0,9.8,0H20v7H4Z"
+                                      class="large-icon" style="fill: currentColor"></path>
+                            </svg>
+                        </li-icon> 
+                    </label>
+                </div>
+                <div style="flex-grow: 1; padding: 10px 10px 10px 25px;" class="share-box__open share-box__trigger p4 hoverable-link-text t-16 t-black--light t-bold">
+                    <label for="ember47-upload-VIDEO" class="share-media-button__label mvA
+                                            share-media-button__label--square">
+
+                        <li-icon aria-hidden="true" type="video-camera-icon" size="large">
+                            <svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0"
+                                 preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false">
+                                <path d="M21,5.92a1,1,0,0,0-.57.18L17,8.5V7a1,1,0,0,0-1-1H3A1,1,0,0,0,2,7V17a1,1,0,0,0,1,1H16a1,1,0,0,0,1-1V15.5l3.43,2.4a1,1,0,0,0,.57.18,1,1,0,0,0,1-1V6.92A1,1,0,0,0,21,5.92ZM15,16H4V8H15v8Zm2-5.21,3-2.1v6.62l-3-2.1V10.79Z"
+                                      class="large-icon" style="fill: currentColor"></path>
+                            </svg>
+                        </li-icon>
+
+                        <!-- <span class="share-media-button__a11y-text visually-hidden">Upload video</span> -->
+                    </label>
+                </div>
+                <div style="flex-grow: 1; padding: 10px 10px 10px 25px;" class="share-box__open p4 hoverable-link-text t-16 t-black--light t-bold">
+                    <label for="ember49-upload-DOCUMENT" class="share-media-button__label mvA
+                                            share-media-button__label--square">
+
+                        <li-icon aria-hidden="true" type="document-icon" size="large">
+                            <svg viewBox="0 0 24 24"
+                                 width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet"
+                                 class="artdeco-icon" focusable="false">
+                                <path d="M14.13,2H5A1,1,0,0,0,4,3V21a1,1,0,0,0,1,1H19a1,1,0,0,0,1-1V7.88ZM18,20H6V4h7V9h5V20ZM8,12h8v1H8V12Zm0,3h6v1H8V15Z"
+                                      class="large-icon" style="fill: currentColor"></path>
+                            </svg>
+                        </li-icon>
+
+                        <!-- <span class="share-media-button__a11y-text visually-hidden">Upload document</span> -->
+                    </label>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="card-footer text-muted">
+            <a href="#">Write an article</a> on LinkedIn
+        </div>
+    </div>
+    <div id="posts">
+        @Html.Action("GetAll")
+    </div>
+
+    <!-- create post Modal-->
+    <div id="ModalCreatePost" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class=" create-post ">
+                    <div style="background-color:#0073b1; padding: 5px 10px" class="modal-header">
+                        <i class="fa fa-user " style="color:#eee;font-size:30px;margin: 0 auto;"></i>
+                    </div>
+
+                    <div class="row modal-body" id="CreatePost">
+
+                        @Html.Action("CreatePost")
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Edit post Modal-->
+    <div id="ModalEditPost" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class=" create-post ">
+                    <div style="background-color:#0073b1; padding: 5px 10px" class="modal-header">
+                        <i class="fa fa-user " style="color:#eee;font-size:30px;margin: 0 auto;"></i>
+                    </div>
+                    <div class="row modal-body  " id="EditId">
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Edit Comment Modal-->
+    <div id="ModalEditComment" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class=" create-post ">
+                    <div style="background-color:#0073b1; padding: 5px 10px" class="modal-header">
+                        <i class="fa fa-user " style="color:#eee;font-size:30px;margin: 0 auto;"></i>
+                    </div>
+
+                    <div class="row modal-body" id="EditCommentId">
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+     function toggleAddPost()
+     {
+         $("#post_content").val("");
+         $("#ModalCreatePost").modal("toggle");
+     }
+
+     function toggleEditPost() {
+         $("#ModalEditPost").modal("toggle");
+     }
+    function toggleEditComment(){
+        $("#ModalEditComment").modal("toggle");
+    }
+</script>
+
+<script>
+    $("#post_content").emojioneArea({
+        pickerPosition: "bottom"
+    })
+</script>
+
+<script>
+    $(".addComment").emojioneArea({
+        pickerPosition: "bottom"
+    })
+</script>
+
+<script>
+    function toggleAddPost() {
+        $("#post_content").val("");
+        $("#ModalCreatePost").modal("toggle");
+    }
+</script>

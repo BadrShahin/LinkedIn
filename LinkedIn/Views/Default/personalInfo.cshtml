@@ -1,0 +1,83 @@
+﻿@model LinkedIn.Models.Member
+
+@{
+    ViewBag.Title = "personalInfo";
+    Layout = "~/Views/Shared/_loginLayout.cshtml";
+}
+
+@section login{
+
+    <h2 class="text-primary">Personal Information </h2>
+
+}
+
+<h2 style="color:cadetblue; text-align: center">Add some information about yourself</h2>
+
+@using (Html.BeginForm("personalInfo", "default", FormMethod.Post, new { style = "margin:auto" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.marital_status_description, htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.marital_status_description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.marital_status_description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.date_of_birth, htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.date_of_birth, new { htmlAttributes = new { @class = "form-control date_birth" } })
+                @Html.ValidationMessageFor(model => model.date_of_birth, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.gender, htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.gender, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.other_details, htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.other_details, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.other_details, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-row" style="margin: 0 10px;">
+            <div class="form-group col-md-6">
+                <div class="col-md-offset-2">
+                    <input type="submit" value="OK" class="btn btn-primary" />
+                </div>
+            </div>
+            <div class="form-group col-md-6 text-right">
+                <div style="margin:2px auto">
+                    @Html.ActionLink("Skip", "Index", "", new { @class = "btn btn-outline-secondary" })
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+
+
+
+<script>
+    $(".date_birth").datepicker({
+    });
+</script>
+

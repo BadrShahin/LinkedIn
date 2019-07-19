@@ -6,7 +6,7 @@ namespace LinkedIn.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class comment
+    public partial class Comment
     {
         [Key]
         [Column(Order = 0)]
@@ -27,6 +27,6 @@ namespace LinkedIn.Models
 
         public virtual Member Member { get; set; }
 
-        public virtual post post { get; set; }
+        public virtual Post Post { get; set; }
     }
 }

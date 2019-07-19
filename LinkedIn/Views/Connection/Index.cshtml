@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Member>
+
+@{
+    ViewBag.Title = "Index";
+    var User = Session["user"] as Member;
+}
+@Html.ActionLink("View Requests", "request", "connection", htmlAttributes: new { @class = "btn btn-outline-info" })
+
+<br />
+<br />
+<div class="card text-center text-muted">
+    <h2>Connection</h2>
+</div>
+<table>
+    @if (Model.Count() > 0)
+    {
+    <tr style="display: flex">
+        @foreach (var item in Model)
+        {
+            <td>
+                <div class="card" style="width: 200px; margin: 10px;">
+                    <img src="@item.profile_image" width="160" height="160" style="margin: 0 auto; padding: 10px 0 ;border-radius: 50%" alt="Profile Pics">
+                    <hr />
+                    <div class="card-body text-center" style="display: grid">
+                        @*<h5 class="card-title">@item.first_name @item.middle_name @item.last_name</h5>*@
+                        @Html.ActionLink(item.first_name + " " + item.last_name, "GetProfile", "profile", routeValues: new { id = item.member_id }, htmlAttributes: new { })
+                        @if ((item.Experiences.FirstOrDefault(x => x.member_id == item.member_id)) != null)
+                        {
+                            <p class="card-text">@item.Experiences.FirstOrDefault(x => x.member_id == item.member_id).title</p>
+                        }
+                        @Html.ActionLink("Connect", "connect", "connection", htmlAttributes: new { @class = "btn btn-primary", style="margin-top: 10px" }, routeValues: new { id = item.member_id })
+
+                    </div>
+                </div>
+            </td>
+        }
+    </tr>
+    }
+</table>

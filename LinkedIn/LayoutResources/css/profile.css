@@ -1,0 +1,179 @@
+.profile-background-image{
+    width: 100%;
+    height: 170px;
+    background: url(https://static.licdn.com/sc/h/3chad3rzxalsf65nuo7hxciac) center/cover;
+}
+.profile-section{
+    height: fit-content;
+}
+
+.profile-image-container{
+    margin: -116px 0 0 0;
+    position: relative;
+    width: 200px;
+}
+
+.profile-image-wrapper{
+    width: 160px;
+    height: 160px;
+    margin: auto;
+    box-sizing: border-box;
+    background-clip: content-box;
+    border: 0 solid transparent;
+    border-radius: 50%;
+    background-color: rgba(243,246,248,.94);
+    box-shadow: inset 0 1.5px 3px 0 rgba(0,0,0,.15),0 1.5px 3px 0 rgba(0,0,0,.15);
+}
+.profile-image-wrapper-button{
+    line-height: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background: 0 0;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.profile-image-wrapper-button-image{
+    width: 152px;
+    height: 152px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#profile_image_input {
+    height: 160px;
+    width: 160px;
+    margin: 0 0 0 -17px;
+    padding: 0;
+    z-index: 10;
+}
+
+.profile_image_camera_change {
+    margin-top: -120px !important;
+    position: absolute;
+    margin-left: 55px !important;
+    font-size: 26px;
+    color: white;
+    display: none;
+}
+#profile_image_input:hover .profile_image_camera_change{
+    display:block !important;
+}
+
+.profile-edit-info{
+    position: absolute;
+    right: 24px;
+    top: 190px;
+}
+.profile-edit-info a:hover{
+    text-decoration: none;
+}
+.artdeco-icon:hover{
+    border-radius: 50%;
+    background-color: #acc3cf;
+}
+
+.info-container{
+    padding: 25px;
+}
+.info-container h4{
+    font-size: 1.3rem;
+}
+.personal-info-container{
+    flex-grow: 2;
+}
+
+.work-short-info-container{
+    flex-grow: 1;
+}
+
+.work-short-info-container ul {
+    list-style-type: none;
+}
+.work-short-info-container ul a{
+    color: inherit;
+}
+.work-short-info-container ul a li{
+    line-height: 1.3rem;
+    padding-bottom: 7px;
+}
+.work-short-info-container ul a:hover{
+    text-decoration: none;
+    color: initial;
+}
+
+/*Experience Style*/
+h5, p {
+    color: #777;
+}
+
+.experience, .education {
+    width: 100%;
+    margin-top: 15px;
+    border: 1px solid #ddd;
+    padding: 20px 20px 0 20px;
+}
+
+.experience .fas, .education .fas {
+    float: right;
+    cursor: pointer;
+}
+
+.fa-plus::before{
+    float: right;
+}
+.experience .title, .education .title {
+    margin-bottom: 30px;
+    padding-left: 10px;
+}
+
+.experience img, .education img {
+    margin-left: 10px;
+}
+
+.experience span, .education span {
+    display: block;
+    color: #888;
+}
+
+.experience .experience-description {
+    margin-top: 10px;
+    color: rgba(0,0,0,.9);
+}
+
+
+hr {
+    display: block;
+    /*margin-bottom: 30px;*/
+    /*margin-left: 125px;*/
+    margin-right: auto;
+    border-width: 1px;
+}
+
+/*edit modal style*/
+
+#editprofileinfomodal .modal-header{
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+#other_details {
+    width: 100% !important;
+    border: 1px solid #ced4da;
+    resize: none;
+}
+
+.bio-container{
+    font-size: 18px;
+    padding: 0 30px;
+}
+
+.form-horizontal .profile-image-container {
+    margin: 0 0 1rem 0;
+    width: 100%;
+}
+.form-horizontal .profile-image-container img:hover{
+
+}

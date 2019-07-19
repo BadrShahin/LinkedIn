@@ -8,16 +8,13 @@ namespace LinkedIn.Models
 
     public partial class Address
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Address()
-        {
-            Members = new HashSet<Member>();
-        }
-
         [Key]
         public int Address_id { get; set; }
 
+        public int? member_id { get; set; }
+
         [StringLength(50)]
+        [Display(Name = "Street")]
         public string line_1 { get; set; }
 
         [StringLength(50)]
@@ -26,22 +23,27 @@ namespace LinkedIn.Models
         [StringLength(50)]
         public string line_3 { get; set; }
 
+        [Required(ErrorMessage ="City is required")]
         [StringLength(50)]
+        [Display(Name = "City")]
         public string city { get; set; }
 
+        [Required(ErrorMessage ="State is required")]
         [StringLength(50)]
         public string state_country_province { get; set; }
 
         [StringLength(50)]
         public string zip_or_postcode { get; set; }
 
+        [Required(ErrorMessage ="Country is required")]
         [StringLength(50)]
+        [Display(Name = "Country")]
         public string country { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Other Details")]
         public string other_details { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Member> Members { get; set; }
+        public virtual Member Member { get; set; }
     }
 }
